@@ -46,7 +46,7 @@ class Piggy(pigo.Pigo):
                 "c": ("Calibrate", self.calibrate),
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit_now)
-                "for": ("Forward", self.forward)
+                "forward": ("Forward", self.forward)
                 "left" ("Turn left", self.left)
                 "right" ("Turn right", self.right)
                 }

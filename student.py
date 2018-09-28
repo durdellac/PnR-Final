@@ -63,8 +63,9 @@ class Piggy(pigo.Pigo):
 
         self.encF(18)
         self.encL(50)
-        for x in range(2):
+        for x in range(1):
             self.servo(30)
+        for x in range(1):
             self.servo(150)
         self.encB(18)
         self.encR(18)

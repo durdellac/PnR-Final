@@ -46,7 +46,7 @@ class Piggy(pigo.Pigo):
                 "c": ("Calibrate", self.calibrate),
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit_now)
-                "forward": ("Forward", self.forward)
+                "forward": ("Forward", self.move_ahead)
                 "left" ("Turn left", self.left)
                 "right" ("Turn right", self.right)
                 }
@@ -59,7 +59,7 @@ class Piggy(pigo.Pigo):
         menu.get(ans, [None, error])[1]()
 
     # YOU DECIDE: How does your GoPiggy dance?
-    def forward(self):
+    def move_ahead(self):
         self.encF(36)
     def left(self):
         self.encL(int(input("how much")))

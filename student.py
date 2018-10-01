@@ -59,11 +59,14 @@ class Piggy(pigo.Pigo):
 
     # YOU DECIDE: How does your GoPiggy dance?
     def move_ahead(self):
-        self.encF(int(input("how many revolutions"))*18)
+        self.encF(float(input("how many revolutions"))*18)
+        pass
     def left_turn(self):
-        self.encL(int(input("how many turns"))*29.5)
+        self.encL(float(input("how many turns"))*29.5)
+        pass
     def right_turn(self):
-        self.encR(int(input("how many turns"))*29.5)
+        self.encR(float(input("how many turns"))*29.5)
+        pass
 
     def dance(self):
         """executes a series of methods that add up to a compound dance"""

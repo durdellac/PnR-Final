@@ -47,8 +47,8 @@ class Piggy(pigo.Pigo):
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit_now),
                 "forward": ("Forward", self.move_ahead),
-                "left" ("Turn left", self.left),
-                "right" ("Turn right", self.right)}
+                "left" ("Turn left", self.left_turn),
+                "right" ("Turn right", self.right_turn)}
         # loop and print the menu...
         for key in sorted(menu.keys()):
             print(key + ":" + menu[key][0])
@@ -60,10 +60,11 @@ class Piggy(pigo.Pigo):
     # YOU DECIDE: How does your GoPiggy dance?
     def move_ahead(self):
         self.encF(36)
-    def left(self):
+    def left_turn(self):
         self.encL(int(input("how much")))
-    def right(self):
+    def right_turn(self):
         self.encR(int(input("how much")))
+
     def dance(self):
         """executes a series of methods that add up to a compound dance"""
         print("\n---- LET'S DANCE ----\n")

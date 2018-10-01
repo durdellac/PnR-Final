@@ -61,9 +61,9 @@ class Piggy(pigo.Pigo):
     def move_ahead(self):
         self.encF(int(input("how many revolutions"))*18)
     def left_turn(self):
-        self.encL(int(input("how much")))
+        self.encL(int(input("how many turns"))*29.5)
     def right_turn(self):
-        self.encR(int(input("how much")))
+        self.encR(int(input("how many turns"))*29.5)
 
     def dance(self):
         """executes a series of methods that add up to a compound dance"""

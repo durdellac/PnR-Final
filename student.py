@@ -59,7 +59,7 @@ class Piggy(pigo.Pigo):
 
     # YOU DECIDE: How does your GoPiggy dance?
     def move_ahead(self):
-        self.encF(36)
+        self.encF(int(input("how far")))
     def left_turn(self):
         self.encL(int(input("how much")))
     def right_turn(self):

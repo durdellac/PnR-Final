@@ -48,8 +48,7 @@ class Piggy(pigo.Pigo):
                 "q": ("Quit", quit_now),
                 "forward": ("Forward", self.move_ahead),
                 "left" ("Turn left", self.left),
-                "right" ("Turn right", self.right),
-                }
+                "right" ("Turn right", self.right)}
         # loop and print the menu...
         for key in sorted(menu.keys()):
             print(key + ":" + menu[key][0])

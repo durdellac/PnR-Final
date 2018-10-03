@@ -83,9 +83,9 @@ class Piggy(pigo.Pigo):
                 self.set_speed(Pigo,200,200)
                 time.sleep(2)
                 for x in range(2):
-                    self.set_speed(Pigo,150,200)
+                    self.set_speed(150,200)
                     time.sleep(.5)
-                    self.set_speed(Pigo,200,150)
+                    self.set_speed(200,150)
                     time.sleep(.5)
 
 

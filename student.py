@@ -89,7 +89,7 @@ class Piggy(pigo.Pigo):
                 return false
             self.encR(10)
         #no problems
-        return true
+        return True
 
         print("\n---- LET'S DANCE ----\n")
         ##### WRITE YOUR FIRST PROJECT HERE

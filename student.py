@@ -77,7 +77,7 @@ class Piggy(pigo.Pigo):
             for x in range(3):
                 self.encL(3)
                 self.encR(6)
-                self.endL(3)
+                self.encL(3)
             self.encF(36)
 
 

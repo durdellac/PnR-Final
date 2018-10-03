@@ -80,7 +80,7 @@ class Piggy(pigo.Pigo):
                 self.encL(3)
             for x in range(1):
                 self.fwd()
-                self.set_speed(Pigo,200,200)
+                self.set_speed(200,200)
                 time.sleep(2)
                 for x in range(2):
                     self.set_speed(150,200)

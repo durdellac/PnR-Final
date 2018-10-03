@@ -78,7 +78,15 @@ class Piggy(pigo.Pigo):
                 self.encL(3)
                 self.encR(6)
                 self.encL(3)
-            self.encF(36)
+            for x in range(1):
+                self.fwd()
+                self.set_speed(Pigo,200,200)
+                time.sleep(2)
+                for x in range(2):
+                    self.set_speed(Pigo,150,200)
+                    time.sleep(.5)
+                    self.set_speed(Pigo,200,150)
+                    time.sleep(.5)
 
 
     def safe_to_dance(self):

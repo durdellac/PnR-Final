@@ -119,8 +119,9 @@ class Pigo(object):
         time.sleep(1 * (enc / 18)+.4)
 
     def encR(self, enc, m1=1, m2=1):
-        """sets encoder, right_rot, += turn_track, (18 = 1 wheel rot)"""
-        print('Moving '+str((enc/18))+' rotation(s) right')
+        """sets encoder, right_rot,+= turn_track, (18 = 1 wheel rot)"""
+        rot= rount(enc/18,2)
+        print('Moving '+str(rot)+' rotation(s) right')
         enc_tgt(m1, m2, enc)
         right_rot()
         self.turn_track += enc

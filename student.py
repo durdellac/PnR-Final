@@ -94,7 +94,7 @@ class Piggy(pigo.Pigo):
         self.fwd()
         self.set_speed((20*x),(20*x))
     """moves back quickly to stand on front wheels"""
-    def _wheelie_back(self):
+    def wheelie_back(self):
         self.set_speed(250,250)
         self.encB(5)
 
@@ -104,7 +104,7 @@ class Piggy(pigo.Pigo):
         #check for obstructions
         for x in range(4):
             if not self.is_clear():
-                return false
+                return False
             self.encR(10)
         #no problems
         return True

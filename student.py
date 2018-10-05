@@ -89,8 +89,8 @@ class Piggy(pigo.Pigo):
     def safe_to_dance(self):
         """completes circle while checking for obstructions"""
         #check for obstructions
-        for x in range(3):
-            if not self.is_clear_wider():
+        for x in range(4):
+            if not self.is_clear():
                 return false
             self.encR(10)
         #no problems

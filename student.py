@@ -1,6 +1,7 @@
 import pigo
 import time  # import just in case students need
 import random
+from math import cos, sin
 
 # setup logs
 import logging
@@ -59,34 +60,28 @@ class Piggy(pigo.Pigo):
 
     # YOU DECIDE: How does your GoPiggy dance?
     def move_ahead(self):
-        self.encF(int(input("\n how many revolutions \n")))
+        self.encF(int(input("\nhow many revolutions \n")))
         pass
     def left_turn(self):
-        self.encL(int(input("\n how many revolutions (30 per turn) \n")))
+        self.encL(int(input("\nhow many revolutions \n"))*29.5)
         pass
     def right_turn(self):
-        self.encR(int(input("\n how many revolutions (30 per turn) \n ")))
+        self.encR(int(input("\nhow many revolutions \n "))*29.5)
         pass
         """executes a series of methods that add up to a compound dance"""
 
     def dance(self):
         if not self.safe_to_dance():
-            print("\n not safe to dance \n")
+            print("\nnot safe to dance \n")
         if self.safe_to_dance():
-            print("\n dancing \n")
-            for x in range(3):
-                self.encL(3)
-                self.encR(6)
-                self.encL(3)
-            for x in range(1):
-                self.fwd()
-                self.set_speed(200,200)
-                time.sleep(2)
-                for x in range(2):
-                    self.set_speed(150,200)
-                    time.sleep(.5)
-                    self.set_speed(200,150)
-                    time.sleep(.5)
+            print("\ndancing \n")
+            self.s_curve_dance()
+
+    """dances"""
+    def s_curve_dance(self):
+       for x in range(10):
+        self.fwd()
+        self.set_speed((cos(x)+1)*200,(sin(x)+1)*200)
 
 
     def safe_to_dance(self):

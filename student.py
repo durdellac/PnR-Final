@@ -78,7 +78,10 @@ class Piggy(pigo.Pigo):
             for x in range(3):
                 self.s_curve_dance()
 
-    """dances"""
+
+    #dances
+
+    """moves in a s pattern forward"""
     def s_curve_dance(self):
        for x in range(5,10,1):
         self.fwd()

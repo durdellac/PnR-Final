@@ -75,7 +75,6 @@ class Piggy(pigo.Pigo):
             print("\nnot safe to dance \n")
             return
         print("\ndancing \n")
-        for x in range(3):
             self.s_curve_dance()
         for x in range(10):
             self.wheelie_back()

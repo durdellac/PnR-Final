@@ -130,7 +130,6 @@ class Piggy(pigo.Pigo):
         self.set_speed(250,250)
         self.encF(5)
         self.encB(18)
-        time.sleep(.25)
 
     """makes a figure eight"""
     def figure_eight(self):
@@ -138,13 +137,14 @@ class Piggy(pigo.Pigo):
         self.encR(8)
         self.fwd()
         self.set_speed(100,200)
-        time.sleep(1.5)
-        self.fwd()
-        self.set_speed(200,100)
         time.sleep(3)
         self.fwd()
+        self.set_speed(200,100)
+        time.sleep(6)
+        self.fwd()
         self.set_speed(100,200)
-        time.sleep(1.5)
+        time.sleep(3)
+        self.set_speed(200,200)
 
 
     def safe_to_dance(self):

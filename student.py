@@ -73,12 +73,12 @@ class Piggy(pigo.Pigo):
     def dance(self):
         if not self.safe_to_dance():
             print("\nnot safe to dance \n")
-        if self.safe_to_dance():
-            print("\ndancing \n")
-            for x in range(3):
-                self.s_curve_dance()
-            for x in range(10):
-                self.wheelie_back()
+            return
+        print("\ndancing \n")
+        for x in range(3):
+            self.s_curve_dance()
+        for x in range(10):
+            self.wheelie_back()
             """
                 
                 

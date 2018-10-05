@@ -113,22 +113,22 @@ class Pigo(object):
 
     def encF(self, enc, m1=1, m2=1):
         """sets encoder, moves forward, sleeps (18 = 1 wheel rot)"""
-        print('Moving '+str((enc//18))+' rotation(s) forward')
+        print('Moving '+str((enc/18))+' rotation(s) forward')
         enc_tgt(m1, m2, enc)
         fwd()
-        time.sleep(1 * (enc // 18)+.4)
+        time.sleep(1 * (enc / 18)+.4)
 
     def encR(self, enc, m1=1, m2=1):
         """sets encoder, right_rot, += turn_track, (18 = 1 wheel rot)"""
-        print('Moving '+str((enc//18))+' rotation(s) right')
+        print('Moving '+str((enc/18))+' rotation(s) right')
         enc_tgt(m1, m2, enc)
         right_rot()
         self.turn_track += enc
-        time.sleep(1 * (enc // 18)+.4)
+        time.sleep(1 * (enc / 18)+.4)
 
     def encL(self, enc, m1=1, m2=1):
         """sets encoder, right_rot, -= turn_track, (18 = 1 wheel rot)"""
-        print('Moving '+str(int(enc//18))+' rotation(s) left')
+        print('Moving '+str(enc/18)+' rotation(s) left')
         enc_tgt(m1, m2, enc)
         left_rot()
         self.turn_track -= enc
@@ -136,10 +136,10 @@ class Pigo(object):
 
     def encB(self, enc, m1=1, m2=1):
         """sets an encoder, moves back, sleeps, (18 = 1 wheel rot)"""
-        print('Moving '+str((enc//18))+ ' rotations(s) backwards')
+        print('Moving '+str((enc/18))+ ' rotations(s) backwards')
         enc_tgt(m1, m2, enc)
         bwd()
-        time.sleep(1 * (enc // 18)+.4)
+        time.sleep(1 * (enc / 18)+.4)
 
     def servo(self, val):
         """moves the head of the robot to the given degree within 60 from midpoint"""

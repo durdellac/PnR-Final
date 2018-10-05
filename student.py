@@ -63,10 +63,10 @@ class Piggy(pigo.Pigo):
         self.encF(int(input("\nhow many revolutions \n")))
         pass
     def left_turn(self):
-        self.encL(float(input("\nhow many revolutions \n"))*29.5)
+        self.encL(int(input("\nhow many revolutions \n")))
         pass
     def right_turn(self):
-        self.encR(float(input("\nhow many revolutions \n "))*29.5)
+        self.encR(int(input("\nhow many revolutions \n ")))
         pass
         """executes a series of methods that add up to a compound dance"""
 

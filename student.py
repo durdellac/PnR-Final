@@ -75,13 +75,15 @@ class Piggy(pigo.Pigo):
             print("\nnot safe to dance \n")
         if self.safe_to_dance():
             print("\ndancing \n")
-            self.s_curve_dance()
+            for x in range(3):
+                self.s_curve_dance()
 
     """dances"""
     def s_curve_dance(self):
-       for x in range(10):
+       for x in range(5,10,1):
         self.fwd()
-        self.set_speed((cos(x)+1)*200,(sin(x)+1)*200)
+        self.set_speed((20*x),(20*x))
+
 
 
     def safe_to_dance(self):

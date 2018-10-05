@@ -76,14 +76,12 @@ class Piggy(pigo.Pigo):
             return
         print("\ndancing \n")
         self.s_curve_dance()
-        for x in range(10):
+        for x in range(5):
             self.wheelie_back()
-            """
-                
-                
-                
-                
-            """
+        """
+        self.figure_eight
+        self.      
+        """
 
     #dances
 
@@ -91,45 +89,45 @@ class Piggy(pigo.Pigo):
     def s_curve_dance(self):
         self.fwd()
         self.set_speed(200,200)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(175,200)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(150,200)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(175,200)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(200,200)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(200,175)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(200,150)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(200,175)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(200,200)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(175,200)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(150,200)
-        time.sleep(.2)
+        time.sleep(.5)
         self.fwd()
         self.set_speed(175,200)
 
     """moves back quickly to stand on front wheels"""
     def wheelie_back(self):
         self.set_speed(250,250)
-        self.encF(2)
-        self.encB(5)
+        self.encF(5)
+        self.encB(10)
 
 
     def safe_to_dance(self):

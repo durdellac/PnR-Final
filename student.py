@@ -77,7 +77,14 @@ class Piggy(pigo.Pigo):
             print("\ndancing \n")
             for x in range(3):
                 self.s_curve_dance()
-
+            for x in range(10):
+                self.wheelie_back()
+            """
+                
+                
+                
+                
+            """
 
     #dances
 
@@ -86,7 +93,10 @@ class Piggy(pigo.Pigo):
        for x in range(5,10,1):
         self.fwd()
         self.set_speed((20*x),(20*x))
-
+    """moves back quickly to stand on front wheels"""
+    def _wheelie_back(self):
+        self.set_speed(250,250)
+        self.encB(5)
 
 
     def safe_to_dance(self):

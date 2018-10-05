@@ -137,13 +137,13 @@ class Piggy(pigo.Pigo):
         self.encR(8)
         self.fwd()
         self.set_speed(100,200)
-        time.sleep(3)
+        time.sleep(1)
         self.fwd()
         self.set_speed(200,100)
-        time.sleep(6)
+        time.sleep(1)
         self.fwd()
         self.set_speed(100,200)
-        time.sleep(3)
+        time.sleep(2)
         self.set_speed(200,200)
 
 
@@ -153,7 +153,7 @@ class Piggy(pigo.Pigo):
         for x in range(4):
             if not self.is_clear():
                 return False
-            self.encR(10)
+            self.encR(7)
         #no problems
         return True
 

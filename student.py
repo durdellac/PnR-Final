@@ -259,6 +259,7 @@ class Piggy(pigo.Pigo):
                 time.sleep(2.5)
                 self.encF((10)
                 time.sleep(.2)
+
             elif self.dist() < 20:
                 self.encF(1)
                 print ("\n\n\n Watch this! \n\n\n")

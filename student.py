@@ -253,13 +253,30 @@ class Piggy(pigo.Pigo):
         while True:
 
             self.dist()
-            if self.dist() < 20:
+            if self.dist() < 10:
                 self.encB(10)
+                print("\n\n\n Woah! I need some space ⊙︿⊙ \n\n\n")
+                time.sleep(2.5)
+                self.encF((10)
+                time.sleep(.2)
+            elif self.dist() < 20:
+                self.encF(1)
+                print ("\n\n\n Watch this! \n\n\n")
+                time.sleep(.2)
+                self.enc1(7.5)
+                self.set_speed(100,200)
+                self.encB(10)
+                self.encR(15)
+                self.set_speed(200,100)
+                self.encF(10)
+                self.encL(7.5)
+                self.set_speed(150,150)
                 time.sleep(.2)
             else:
                 for x in range (160,0,-20):
                     self.servo(x)
                     time.sleep(.2)
+                time.sleep(1)
 
 
 ####################################################

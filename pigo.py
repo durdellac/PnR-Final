@@ -52,12 +52,13 @@ class Pigo(object):
 
             self.dist()
             if self.dist() < 20:
-                self.encB(18)
+                self.encB(10)
                 time.sleep(.2)
             else:
                 for x in range (160,0,-20):
                     self.servo(x)
                     time.sleep(.2)
+
 
     def beShy(self):
         """animates a shy withdrawal"""

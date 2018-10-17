@@ -267,7 +267,7 @@ class Piggy(pigo.Pigo):
                 self.encL(8)
                 self.set_speed(100,200)
                 self.encB(40)
-                self.encR(15)
+                self.encR(20)
                 self.set_speed(200,100)
                 self.encF(40)
                 self.encL(8)

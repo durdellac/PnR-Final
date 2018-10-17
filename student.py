@@ -264,7 +264,7 @@ class Piggy(pigo.Pigo):
                 self.encF(1)
                 print ("\n\n\n Watch this! \n\n\n")
                 time.sleep(.2)
-                self.enc1(7.5)
+                self.encL(7.5)
                 self.set_speed(100,200)
                 self.encB(10)
                 self.encR(15)
@@ -277,6 +277,7 @@ class Piggy(pigo.Pigo):
                 for x in range (160,0,-20):
                     self.servo(x)
                     time.sleep(.2)
+                self.servo(self.MIDPOINT)
                 time.sleep(1)
 
 

@@ -46,7 +46,7 @@ class Piggy(pigo.Pigo):
                 "o": ("Obstacle count", self.obstacle_count),
                 "c": ("Calibrate", self.calibrate),
                 "s": ("Check status", self.status),
-                "h": ("Open House", self.open_houe),
+                "h": ("Open House", self.open_house),
                 "q": ("Quit", quit_now),
                 "f": ("Forward", self.move_ahead),
                 "l": ("Turn left", self.left_turn),

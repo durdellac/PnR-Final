@@ -130,14 +130,14 @@ class Piggy(pigo.Pigo):
 
 
     def wheelie_back(self):
-    """pitiful attempt to pick the back wheels up"""
+        """pitiful attempt to pick the back wheels up"""
         self.set_speed(250,250)
         self.encF(5)
         self.encB(18)
 
 
     def figure_eight(self):
-    """makes a figure eight"""
+        """makes a figure eight"""
         self.set_speed(200,200)
         self.encR(8)
         self.fwd()
@@ -153,7 +153,7 @@ class Piggy(pigo.Pigo):
 
     #gart
     def surprise(self):
-    """creates the coolest move you have ever seen"""
+        """creates the coolest move you have ever seen"""
         for x in range(2):
             self.encF(30)
             self.encL(5)
@@ -175,7 +175,7 @@ class Piggy(pigo.Pigo):
 
     #yuke
     def dancing_forward(self):
-    """head rotate with its body"""
+        """head rotate with its body"""
         for x in range(3):
             self.servo(self.MIDPOINT - 30)
             self.encR(2)

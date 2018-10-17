@@ -90,7 +90,7 @@ class Piggy(pigo.Pigo):
 
 
     def s_curve_dance(self):
-    """moves in a s pattern forward"""
+        """moves in a s pattern forward"""
         self.fwd()
         self.set_speed(200,200)
         time.sleep(.5)

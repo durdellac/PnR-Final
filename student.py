@@ -80,15 +80,8 @@ class Piggy(pigo.Pigo):
         for x in range(5):
             self.wheelie_back()
         self.figure_eight()
-        self.surprise()
-        """
-       
-        self.      
-        """
 
     #dances
-
-
     def s_curve_dance(self):
         """moves in a s pattern forward"""
         self.fwd()
@@ -254,6 +247,21 @@ class Piggy(pigo.Pigo):
         while self.dist() > self.SAFE_STOP_DIST:
             time.sleep(.5)
         self.stop()
+
+    def open_house(self):
+        """Cute demo used for open house"""
+        while True:
+
+            self.dist()
+            if self.dist() < 20:
+                self.encB(10)
+                time.sleep(.2)
+            else:
+                for x in range (160,0,-20):
+                    self.servo(x)
+                    time.sleep(.2)
+
+
 ####################################################
 ############### STATIC FUNCTIONS
 

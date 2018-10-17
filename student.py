@@ -257,7 +257,7 @@ class Piggy(pigo.Pigo):
                 self.encB(10)
                 print("\n\n\n Woah! I need some space (-.-) \n\n\n")
                 time.sleep(2.5)
-                self.encF((10)
+                self.encF(10)
                 time.sleep(.2)
 
             elif self.dist() < 20:

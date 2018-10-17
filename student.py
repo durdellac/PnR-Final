@@ -254,27 +254,30 @@ class Piggy(pigo.Pigo):
 
             self.dist()
             if self.dist() < 10:
+                """gets scared and needs space like a true introvert"""
                 self.encB(10)
                 print("\n\n\n Woah! I need some space (-.-) \n\n\n")
                 time.sleep(2.5)
                 self.encF(10)
                 time.sleep(.2)
 
-            elif self.dist() < 20:
+            elif self.dist() < 30:
+                """half turn, flip midway then rest of the turn"""
                 self.encF(1)
                 print ("\n\n\n Watch this! \n\n\n")
                 time.sleep(.2)
                 self.encL(8)
                 self.set_speed(100,200)
-                self.encB(45)
+                self.encB(42)
                 self.set_speed(200,200)
                 self.encR(15)
                 self.set_speed(200,100)
-                self.encF(45)
+                self.encF(42)
                 self.encL(8)
                 self.set_speed(150,150)
                 time.sleep(.2)
             else:
+                """looks for people to run from"""
                 for x in range (160,0,-20):
                     self.servo(x)
                     time.sleep(.2)

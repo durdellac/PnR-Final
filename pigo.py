@@ -48,11 +48,9 @@ class Pigo(object):
 
     def open_house(self):
         """Cute demo used for open house"""
-        choice = raw_input("1) Shy;  2) Spin.. ")
-        if choice == "1":
-            while True:
-                if not self.is_clear():
-                    self.beShy()
+        while True:
+            if self.dist() <20
+                self.encB(10)
         else:
             while True:
                 if not self.is_clear():

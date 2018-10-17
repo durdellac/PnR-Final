@@ -46,6 +46,7 @@ class Piggy(pigo.Pigo):
                 "o": ("Obstacle count", self.obstacle_count),
                 "c": ("Calibrate", self.calibrate),
                 "s": ("Check status", self.status),
+                "h": ("Open House", self.open_houe),
                 "q": ("Quit", quit_now),
                 "f": ("Forward", self.move_ahead),
                 "l": ("Turn left", self.left_turn),
@@ -79,6 +80,7 @@ class Piggy(pigo.Pigo):
         for x in range(5):
             self.wheelie_back()
         self.figure_eight()
+        self.surprise()
         """
        
         self.      
@@ -86,8 +88,9 @@ class Piggy(pigo.Pigo):
 
     #dances
 
-    """moves in a s pattern forward"""
+
     def s_curve_dance(self):
+    """moves in a s pattern forward"""
         self.fwd()
         self.set_speed(200,200)
         time.sleep(.5)
@@ -125,14 +128,16 @@ class Piggy(pigo.Pigo):
         self.set_speed(175,200)
         time.sleep(.5)
 
-    """moves back quickly to stand on front wheels"""
+
     def wheelie_back(self):
+    """pitiful attempt to pick the back wheels up"""
         self.set_speed(250,250)
         self.encF(5)
         self.encB(18)
 
-    """makes a figure eight"""
+
     def figure_eight(self):
+    """makes a figure eight"""
         self.set_speed(200,200)
         self.encR(8)
         self.fwd()
@@ -146,10 +151,45 @@ class Piggy(pigo.Pigo):
         time.sleep(2)
         self.set_speed(200,200)
 
+    #gart
+    def surprise(self):
+    """creates the coolest move you have ever seen"""
+        for x in range(2):
+            self.encF(30)
+            self.encL(5)
+            self.encB(5)
+            self.encR(10)
+            self.encB(5)
+            self.encL(5)
+            self.encB(5)
+            self.encR(10)
+            self.encB(5)
+            self.encL(5)
+            self.encB(5)
+            self.encR(10)
+            self.encB(5)
+            self.encL(5)
+            self.encB(5)
+            self.encR(10)
+            self.encB(5)
+
+    #yuke
+    def dancing_forward(self):
+    """head rotate with its body"""
+        for x in range(3):
+            self.servo(self.MIDPOINT - 30)
+            self.encR(2)
+            self.servo(self.MIDPOINT)
+            self.encF(5)
+            self.servo(self.MIDPOINT + 30)
+            self.encL(2)
+            self.servo(self.MIDPOINT)
+            self.encF(5)
+
 
     def safe_to_dance(self):
         """completes circle while checking for obstructions"""
-        #check for obstructions
+        # check for obstructions
         for x in range(4):
             if not self.is_clear():
                 return False

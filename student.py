@@ -67,13 +67,13 @@ class Piggy(pigo.Pigo):
         fwd()
 
     def left_turn(self):
-        i= int(input("\nhow many revolutions \n")))
+        i= int(input("\nhow many revolutions \n"))
         enc_tgt(1, 1, i)
         right_rot()
         self.turn_track += i
 
     def right_turn(self):
-        i= int(input("\nhow many revolutions \n ")))
+        i= int(input("\nhow many revolutions \n "))
         enc_tgt(1, 1, i)
         left_rot()
         self.turn_track += i

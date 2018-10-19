@@ -2,6 +2,7 @@ import pigo
 import time  # import just in case students need
 import random
 from math import cos, sin
+from gopigo import *
 
 # setup logs
 import logging
@@ -61,8 +62,10 @@ class Piggy(pigo.Pigo):
 
     # YOU DECIDE: How does your GoPiggy dance?
     def move_ahead(self):
-        self.encF(int(input("\nhow many revolutions \n")))
-        pass
+        i= int(input("\nhow many revolutions \n"))
+        enc_tgt(1, 1, i)
+        fwd()
+
     def left_turn(self):
         self.encL(int(input("\nhow many revolutions \n")))
         pass

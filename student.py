@@ -67,12 +67,20 @@ class Piggy(pigo.Pigo):
         fwd()
 
     def left_turn(self):
-        self.encL(int(input("\nhow many revolutions \n")))
-        pass
+        i= int(input("\nhow many revolutions \n")))
+        enc_tgt(1, 1, i)
+        right_rot()
+        self.turn_track += i
+
     def right_turn(self):
-        self.encR(int(input("\nhow many revolutions \n ")))
-        pass
-        """executes a series of methods that add up to a compound dance"""
+        i= int(input("\nhow many revolutions \n ")))
+        enc_tgt(1, 1, i)
+        left_rot()
+        self.turn_track += i
+
+
+
+    """executes a series of methods that add up to a compound dance"""
 
     def dance(self):
         if not self.safe_to_dance():

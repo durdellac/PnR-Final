@@ -65,18 +65,21 @@ class Piggy(pigo.Pigo):
         i= int(input("\nhow many revolutions \n"))
         enc_tgt(1, 1, i)
         fwd()
+        time.sleep(1+(i//18))
 
     def left_turn(self):
         i= int(input("\nhow many revolutions \n"))
         enc_tgt(1, 1, i)
         right_rot()
         self.turn_track += i
+        time.sleep(1 + (i // 18))
 
     def right_turn(self):
         i= int(input("\nhow many revolutions \n "))
         enc_tgt(1, 1, i)
         left_rot()
         self.turn_track += i
+        time.sleep(1 + (i // 18))
 
 
 

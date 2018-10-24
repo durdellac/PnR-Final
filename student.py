@@ -326,7 +326,7 @@ class Piggy(pigo.Pigo):
         else:
             #turns until no object directly ahead
             while not self.is_clear():
-                self.encL(1)
+                self.encL(3)
 
 
 

@@ -51,7 +51,8 @@ class Piggy(pigo.Pigo):
                 "q": ("Quit", quit_now),
                 "f": ("Forward", self.move_ahead),
                 "l": ("Turn left", self.left_turn),
-                "r": ("Turn right", self.right_turn)}
+                "r": ("Turn right", self.right_turn),
+                "t": ("Test left or right", self.skill_test)}
         # loop and print the menu...
         for key in sorted(menu.keys()):
             print(key + ":" + menu[key][0])
@@ -297,6 +298,38 @@ class Piggy(pigo.Pigo):
                     time.sleep(.2)
                 self.servo(self.MIDPOINT)
                 time.sleep(1)
+
+    def skill_test(self):
+        """demonstrates that I actually know what I'm doing in class"""
+        coice= raw_input("Left/Right or Turn Until Clear?")
+
+        if "l" in choice:
+            self.wide_scan(count=2)
+            #turns away from object left or right
+            left_dist= 0
+            right_dist= 0
+            for ang in range (146,86,-1):
+                if self.scan[ang]:
+                    left_dist += self.scan[ang]
+            for ang in range (84,24,-1):
+                if self.scan[ang]:
+                    right_dist += self.scan[ang]
+
+            if abs(left_dist - right_dist) <= 600:
+                print ("\n I can't tell which direction \n")
+            elif left_dist > right_dist:
+                print ("\n Object on right side \n")
+                self.encL(8)
+            elif right_dist > left_dist:
+                print ("\n Object on left side \n")
+                self.encR(8)
+        else:
+            #turns until no object directly ahead
+            while not self.is_clear():
+                self.encL(1)
+
+
+
 
 
 ####################################################

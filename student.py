@@ -293,6 +293,7 @@ class Piggy(pigo.Pigo):
             self.servo(ang)
             self.dist()
             m['right_dist'] += self.dist()
+        time.sleep(1)
         self.encL(8)
 
         if max(m, key=m.get) == 'left_dist':

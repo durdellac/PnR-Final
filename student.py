@@ -3,6 +3,7 @@ import time  # import just in case students need
 import random
 from math import cos, sin
 from gopigo import *
+import logging
 
 # setup logs
 import logging
@@ -254,14 +255,77 @@ class Piggy(pigo.Pigo):
             if self.is_clear():
                 self.cruise()
             else:
-                self.encR(10)
+            #if robot gets stuck
+                self.direction_choice()
+
+
+    def direction_choice(self):
+        """decides which direction to turn for cruise"""
+        m ={}
+        m['left_dist'] = 0
+        m['mid_left_dist'] = 0
+        m['mid_dist'] = 0
+        m['mid_right_dist'] = 0
+        m['right_dist'] = 0
+
+        self.encL(8)
+        for ang in range(self.MIDPOINT + 20, self.MIDPOINT - 20, -1):
+            self.servo(ang)
+            self.dist()
+            m['left_dist'] += self.dist()
+        self.encR(4)
+        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -1):
+            self.servo(ang)
+            self.dist()
+            m['mid_left_dist'] += self.dist()
+        self.encR(4)
+        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -1):
+            self.servo(ang)
+            self.dist()
+            m['mid_dist'] += self.dist()
+        self.encR(4)
+        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -1):
+            self.servo(ang)
+            self.dist()
+            m['mid_right_dist'] += self.dist()
+        self.encR(4)
+        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -1):
+            self.servo(ang)
+            self.dist()
+            m['right_dist'] += self.dist()
+        self.encL(8)
+
+        if max(m, key=m.get) == 'left_dist':
+            self.encL(8)
+        elif max(m, key=m.get) == 'mid_left_dist':
+            self.encL(4)
+        elif max(m, key=m.get) == 'mid_dist':
+            pass
+        elif max(m, key=m.get) == 'mid_right_dist':
+            self.encR(4)
+        elif max(m, key=m.get) == 'right_dist':
+            self.encR(8)
+
+
+    def cruise_check(self):
+        """proprietary check for obstacles used while driving"""
+        total_dist = 0
+        self.servo(self.MIDPOINT-10)
+        total_dist += self.dist()
+        self.servo(self.MIDPOINT)
+        total_dist += self.dist()
+        self.servo(self.MIDPOINT+10)
+        total_dist += self.dist()
+        return total_dist
 
     def cruise(self):
         """ drive straight while path is clear """
         self.fwd()
-        while self.dist() > self.SAFE_STOP_DIST:
-            time.sleep(.5)
+        while self.cruise_check() > self.SAFE_STOP_DIST*3:
+        #scan to check for obstacles while driving
+            time.sleep(.1)
         self.stop()
+        #returns robot to nav method
 
     def open_house(self):
         """Cute demo used for open house"""
@@ -304,8 +368,8 @@ class Piggy(pigo.Pigo):
         choice= raw_input("Left/Right or Turn Until Clear?")
 
         if "l" in choice:
+
             self.wide_scan(count=2)
-            #turns away from object left or right
             left_dist= 0
             right_dist= 0
             for ang in range (146,86,-1):

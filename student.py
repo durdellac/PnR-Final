@@ -22,7 +22,7 @@ class Piggy(pigo.Pigo):
         # Our servo turns the sensor. What angle of the servo( ) method sets it straight?
         self.MIDPOINT = 86
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
-        self.SAFE_STOP_DIST = 30
+        self.SAFE_STOP_DIST = 50
         self.HARD_STOP_DIST = 15
         # YOU DECIDE: What left motor power helps straighten your fwd()?
         self.LEFT_SPEED = 150
@@ -269,27 +269,27 @@ class Piggy(pigo.Pigo):
         m['right_dist'] = 0
 
         self.encL(8)
-        for ang in range(self.MIDPOINT + 20, self.MIDPOINT - 20, -1):
+        for ang in range(self.MIDPOINT + 20, self.MIDPOINT - 20, -4):
             self.servo(ang)
             self.dist()
             m['left_dist'] += self.dist()
         self.encR(4)
-        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -1):
+        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -4):
             self.servo(ang)
             self.dist()
             m['mid_left_dist'] += self.dist()
         self.encR(4)
-        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -1):
+        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -4):
             self.servo(ang)
             self.dist()
             m['mid_dist'] += self.dist()
         self.encR(4)
-        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -1):
+        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -4):
             self.servo(ang)
             self.dist()
             m['mid_right_dist'] += self.dist()
         self.encR(4)
-        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -1):
+        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -4):
             self.servo(ang)
             self.dist()
             m['right_dist'] += self.dist()

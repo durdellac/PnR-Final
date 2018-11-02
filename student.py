@@ -4,6 +4,8 @@ import random
 from math import cos, sin
 from gopigo import *
 import logging
+from grove_rgb_lcd import *
+
 
 # setup logs
 import logging
@@ -261,6 +263,7 @@ class Piggy(pigo.Pigo):
 
     def direction_choice(self):
         """decides which direction to turn for cruise"""
+        #current issue: when scanning too close stop command interferes
         m ={}
         m['left_dist'] = 0
         m['mid_left_dist'] = 0
@@ -306,16 +309,23 @@ class Piggy(pigo.Pigo):
             self.encR(4)
         elif max(m, key=m.get) == 'right_dist':
             self.encR(8)
+        else:
+            setText("I don't know \n where to go")
+            time.sleep(5)
+            setText("Atleast you get \n a light show")
+            for x in range(3):
+                for color in range(0,255):
+                    setRGB(0,255-color, color)
 
 
     def cruise_check(self):
         """proprietary check for obstacles used while driving"""
         total_dist = 0
-        self.servo(self.MIDPOINT-10)
+        self.servo(self.MIDPOINT-15)
         total_dist += self.dist()
         self.servo(self.MIDPOINT)
         total_dist += self.dist()
-        self.servo(self.MIDPOINT+10)
+        self.servo(self.MIDPOINT+15)
         total_dist += self.dist()
         return total_dist
 
@@ -324,7 +334,7 @@ class Piggy(pigo.Pigo):
         self.fwd()
         while self.cruise_check() > self.SAFE_STOP_DIST*3:
         #scan to check for obstacles while driving
-            time.sleep(.1)
+            time.sleep(0)
         self.stop()
         #returns robot to nav method
 
@@ -395,7 +405,14 @@ class Piggy(pigo.Pigo):
 
 
 
-
+   def stop(self):
+        """spams stop command and moves servo to midpoint"""
+        print('All stop.')
+        setText("All stop \n STOP COMMAND RECEIVED")
+        for x in range(3):
+            stop()
+        self.servo(self.MIDPOINT)
+        logging.info("STOP COMMAND RECEIVED")
 
 ####################################################
 ############### STATIC FUNCTIONS

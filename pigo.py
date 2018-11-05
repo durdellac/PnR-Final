@@ -11,8 +11,8 @@ class Pigo(object):
     def __init__(self):
         """establishes midpoint, standard stop distance and motor speed then opens menu"""
         self.MIDPOINT = 90
-        self.HARD_STOP_DIST = 10
-        self.SAFE_STOP_DIST = 30
+        self.HARD_STOP_DIST = 15
+        self.SAFE_STOP_DIST = 20
         self.RIGHT_SPEED = 200
         self.LEFT_SPEED = 200
         self.turn_track = 0

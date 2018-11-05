@@ -24,7 +24,7 @@ class Piggy(pigo.Pigo):
         # Our servo turns the sensor. What angle of the servo( ) method sets it straight?
         self.MIDPOINT = 86
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
-        self.SAFE_STOP_DIST = 50
+        self.SAFE_STOP_DIST = 20
         self.HARD_STOP_DIST = 15
         # YOU DECIDE: What left motor power helps straighten your fwd()?
         self.LEFT_SPEED = 150
@@ -272,31 +272,35 @@ class Piggy(pigo.Pigo):
         m['right_dist'] = 0
 
         self.encL(8)
-        for ang in range(self.MIDPOINT + 20, self.MIDPOINT - 20, -4):
+        for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
-            self.dist()
-            m['left_dist'] += self.dist()
+            mes_1 = us_dist(15)
+            mes_2 = us_dist(15)
+            m['left_dist'] += ((mes_1+mes_2)/2)
         self.encR(4)
-        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -4):
+        for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
-            self.dist()
-            m['mid_left_dist'] += self.dist()
+            mes_1=us_dist(15)
+            mes_2 = us_dist(15)
+            m['mid_left_dist'] += ((mes_1+mes_2)/2)
         self.encR(4)
-        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -4):
+        for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
-            self.dist()
-            m['mid_dist'] += self.dist()
+            mes_1 = us_dist(15)
+            mes_2 = us_dist(15)
+            m['mid_dist'] += ((mes_1+mes_2)/2)
         self.encR(4)
-        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -4):
+        for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
-            self.dist()
-            m['mid_right_dist'] += self.dist()
+            mes_1 = us_dist(15)
+            mes_2 = us_dist(15)
+            m['mid_right_dist'] += ((mes_1+mes_2)/2)
         self.encR(4)
-        for ang in range(self.MIDPOINT+20, self.MIDPOINT-20, -4):
+        for ang in range(self.MIDPOINT+15, self.MIDPOINT-15, -3):
             self.servo(ang)
-            self.dist()
-            m['right_dist'] += self.dist()
-        time.sleep(1)
+            mes_1 = us_dist(15)
+            mes_2 = us_dist(15)
+            m['right_dist'] += ((mes_1+mes_2)/2)
         self.encL(8)
 
         if max(m, key=m.get) == 'left_dist':
@@ -317,22 +321,25 @@ class Piggy(pigo.Pigo):
                 for color in range(0,255):
                     setRGB(0,255-color, color)
 
-
     def cruise_check(self):
         """proprietary check for obstacles used while driving"""
         total_dist = 0
-        self.servo(self.MIDPOINT-15)
-        total_dist += self.dist()
+        self.servo(self.MIDPOINT-10)
+        total_dist += us_dist(15)
+        self.servo(self.MIDPOINT -5)
+        total_dist += us_dist(15)
         self.servo(self.MIDPOINT)
-        total_dist += self.dist()
-        self.servo(self.MIDPOINT+15)
-        total_dist += self.dist()
+        total_dist += us_dist(15)
+        self.servo(self.MIDPOINT +5)
+        total_dist += us_dist(15)
+        self.servo(self.MIDPOINT+10)
+        total_dist += us_dist(15)
         return total_dist
 
     def cruise(self):
         """ drive straight while path is clear """
         self.fwd()
-        while self.cruise_check() > self.SAFE_STOP_DIST*3:
+        while self.cruise_check() > self.SAFE_STOP_DIST*5:
         #scan to check for obstacles while driving
             time.sleep(0)
         self.stop()
@@ -344,7 +351,7 @@ class Piggy(pigo.Pigo):
 
             self.dist()
             if self.dist() < 10:
-                """gets scared and needs space like a true introvert"""
+            #gets scared and needs space like a true introvert
                 self.encB(10)
                 print("\n\n\n Woah! I need some space (-.-) \n\n\n")
                 time.sleep(2.5)
@@ -352,7 +359,7 @@ class Piggy(pigo.Pigo):
                 time.sleep(.2)
 
             elif self.dist() < 30:
-                """half turn, flip midway then rest of the turn"""
+                #half turn, flip midway then rest of the turn
                 self.encF(1)
                 print ("\n\n\n Watch this! \n\n\n")
                 time.sleep(.2)
@@ -367,7 +374,7 @@ class Piggy(pigo.Pigo):
                 self.set_speed(150,150)
                 time.sleep(.2)
             else:
-                """looks for people to run from"""
+                #looks for people to run from
                 for x in range (160,0,-20):
                     self.servo(x)
                     time.sleep(.2)
@@ -408,6 +415,7 @@ class Piggy(pigo.Pigo):
    def stop(self):
         """spams stop command and moves servo to midpoint"""
         print('All stop.')
+
         setText("All stop \n STOP COMMAND RECEIVED")
         for x in range(3):
             stop()

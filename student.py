@@ -4,7 +4,7 @@ import random
 from math import cos, sin
 from gopigo import *
 import logging
-from grove_rgb_lcd import *
+
 
 
 # setup logs
@@ -314,12 +314,7 @@ class Piggy(pigo.Pigo):
         elif max(m, key=m.get) == 'right_dist':
             self.encR(8)
         else:
-            setText("I don't know \n where to go")
-            time.sleep(5)
-            setText("Atleast you get \n a light show")
-            for x in range(3):
-                for color in range(0,255):
-                    setRGB(0,255-color, color)
+            print("rip the display code")
 
     def cruise_check(self):
         """proprietary check for obstacles used while driving"""
@@ -415,8 +410,6 @@ class Piggy(pigo.Pigo):
 def stop(self):
         """spams stop command and moves servo to midpoint"""
         print('All stop.')
-
-        setText("All stop \n STOP COMMAND RECEIVED")
         for x in range(3):
             stop()
         self.servo(self.MIDPOINT)

@@ -321,14 +321,19 @@ class Piggy(pigo.Pigo):
         total_dist = 0
         self.servo(self.MIDPOINT-10)
         total_dist += us_dist(15)
+        time.sleep(.05)
         self.servo(self.MIDPOINT -5)
         total_dist += us_dist(15)
+        time.sleep(.05)
         self.servo(self.MIDPOINT)
         total_dist += us_dist(15)
+        time.sleep(.05)
         self.servo(self.MIDPOINT +5)
         total_dist += us_dist(15)
+        time.sleep(.05)
         self.servo(self.MIDPOINT+10)
         total_dist += us_dist(15)
+        time.sleep(.05)
         return total_dist
 
     def cruise(self):

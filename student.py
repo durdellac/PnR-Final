@@ -412,7 +412,7 @@ class Piggy(pigo.Pigo):
 
 
 
-   def stop(self):
+def stop(self):
         """spams stop command and moves servo to midpoint"""
         print('All stop.')
 

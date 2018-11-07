@@ -318,6 +318,25 @@ class Piggy(pigo.Pigo):
             print("rip the display code")
         time.sleep(1)
 
+    def is_clear(self):
+        """does a 3-point scan around the midpoint, returns false if a test fails"""
+        print("Running the is_clear method.")
+        for x in range((self.MIDPOINT - 10), (self.MIDPOINT + 10), 5):
+            self.servo(x)
+            scan1 = self.dist()
+            # double check the distance
+            scan2 = self.dist()
+            # if I found a different distance the second time....
+            if abs(scan1 - scan2) > 2:
+                scan3 = self.dist()
+                # take another scan and average the three together
+                scan1 = (scan1 + scan2 + scan3) / 3
+            self.scan[x] = scan1
+            print("Degree: " + str(x) + ", distance: " + str(scan1))
+            if scan1 < self.SAFE_STOP_DIST:
+                print("Doesn't look clear to me")
+                return False
+
     def cruise_check(self):
         """proprietary check for obstacles used while driving"""
         total_dist = 0

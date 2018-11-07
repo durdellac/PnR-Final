@@ -302,6 +302,7 @@ class Piggy(pigo.Pigo):
             mes_2 = self.distance()
             m['right_dist'] += ((mes_1+mes_2)/2)
         self.encL(8)
+        time.sleep(1)
 
         if max(m, key=m.get) == 'left_dist':
             self.encL(8)
@@ -315,7 +316,7 @@ class Piggy(pigo.Pigo):
             self.encR(8)
         else:
             print("rip the display code")
-        time.sleep(2)
+        time.sleep(1)
 
     def cruise_check(self):
         """proprietary check for obstacles used while driving"""
@@ -338,10 +339,10 @@ class Piggy(pigo.Pigo):
 
     def cruise(self):
         """ drive straight while path is clear """
-        self.fwd()
-        while self.cruise_check() < self.SAFE_STOP_DIST*3:
+        while self.cruise_check() > self.SAFE_STOP_DIST*3:
+            self.fwd()
         #scan to check for obstacles while driving
-            self.stop()
+        self.stop()
             #returns robot to nav method
 
     def open_house(self):

@@ -343,8 +343,10 @@ class Piggy(pigo.Pigo):
         self.fwd()
         if self.cruise_check() > self.SAFE_STOP_DIST*3:
         #scan to check for obstacles while driving
+            time.sleep(.01)
+        else:
             self.stop()
-            #returns robot to nav method
+        #returns robot to nav method
 
     def open_house(self):
         """Cute demo used for open house"""

@@ -24,7 +24,7 @@ class Piggy(pigo.Pigo):
         # Our servo turns the sensor. What angle of the servo( ) method sets it straight?
         self.MIDPOINT = 86
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
-        self.SAFE_STOP_DIST = 20
+        self.SAFE_STOP_DIST = 25
         self.HARD_STOP_DIST = 15
         # YOU DECIDE: What left motor power helps straighten your fwd()?
         self.LEFT_SPEED = 150
@@ -319,15 +319,11 @@ class Piggy(pigo.Pigo):
     def cruise_check(self):
         """proprietary check for obstacles used while driving"""
         total_dist = 0
-        self.servo(self.MIDPOINT-10)
-        total_dist += self.distance()
         self.servo(self.MIDPOINT -5)
         total_dist += self.distance()
         self.servo(self.MIDPOINT)
         total_dist += self.distance()
         self.servo(self.MIDPOINT +5)
-        total_dist += self.distance()
-        self.servo(self.MIDPOINT+10)
         total_dist += self.distance()
         return total_dist
 
@@ -342,7 +338,7 @@ class Piggy(pigo.Pigo):
     def cruise(self):
         """ drive straight while path is clear """
         self.fwd()
-        while self.cruise_check() > self.SAFE_STOP_DIST*5:
+        while self.cruise_check() > self.SAFE_STOP_DIST*3:
         #scan to check for obstacles while driving
             time.sleep(0)
         self.stop()

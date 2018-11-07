@@ -332,7 +332,7 @@ class Piggy(pigo.Pigo):
         return total_dist
 
     def distance(self):
-        d= =us_dist(15)
+        d= us_dist(15)
         time.sleep(.01)
         print ("DISTANCE MEASURED: " + str(d) + " CM")
         return d

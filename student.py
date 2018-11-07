@@ -24,7 +24,7 @@ class Piggy(pigo.Pigo):
         # Our servo turns the sensor. What angle of the servo( ) method sets it straight?
         self.MIDPOINT = 86
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
-        self.SAFE_STOP_DIST = 30
+        self.SAFE_STOP_DIST = 35
         self.HARD_STOP_DIST = 15
         # YOU DECIDE: What left motor power helps straighten your fwd()?
         self.LEFT_SPEED = 150
@@ -271,7 +271,7 @@ class Piggy(pigo.Pigo):
         m['mid_right_dist'] = 0
         m['right_dist'] = 0
 
-        self.encL(8)
+        self.encL(7)
         for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
             mes_1 = self.distance()
@@ -283,13 +283,13 @@ class Piggy(pigo.Pigo):
             mes_1= self.distance()
             mes_2 = self.distance()
             m['mid_left_dist'] += ((mes_1+mes_2)/2)
-        self.encR(4)
+        self.encR(3)
         for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
             mes_1 = self.distance()
             mes_2 = self.distance()
             m['mid_dist'] += ((mes_1+mes_2)/2)
-        self.encR(4)
+        self.encR(3)
         for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
             mes_1 = self.distance()
@@ -301,19 +301,19 @@ class Piggy(pigo.Pigo):
             mes_1 = self.distance()
             mes_2 = self.distance()
             m['right_dist'] += ((mes_1+mes_2)/2)
-        self.encL(8)
+        self.encL(7)
         time.sleep(1)
 
         if max(m, key=m.get) == 'left_dist':
-            self.encL(8)
+            self.encL(7)
         elif max(m, key=m.get) == 'mid_left_dist':
-            self.encL(4)
+            self.encL(3)
         elif max(m, key=m.get) == 'mid_dist':
             pass
         elif max(m, key=m.get) == 'mid_right_dist':
-            self.encR(4)
+            self.encR(3)
         elif max(m, key=m.get) == 'right_dist':
-            self.encR(8)
+            self.encR(7)
         else:
             print("rip the display code")
         time.sleep(1)

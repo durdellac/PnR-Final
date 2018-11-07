@@ -338,11 +338,10 @@ class Piggy(pigo.Pigo):
     def cruise(self):
         """ drive straight while path is clear """
         self.fwd()
-        while self.cruise_check() > self.SAFE_STOP_DIST*3:
+        while self.cruise_check() < self.SAFE_STOP_DIST*3:
         #scan to check for obstacles while driving
-            time.sleep(0)
-        self.stop()
-        #returns robot to nav method
+            self.stop()
+            #returns robot to nav method
 
     def open_house(self):
         """Cute demo used for open house"""

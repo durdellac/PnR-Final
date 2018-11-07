@@ -274,32 +274,32 @@ class Piggy(pigo.Pigo):
         self.encL(8)
         for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
-            mes_1 = us_dist(15)
-            mes_2 = us_dist(15)
+            mes_1 = self.distance()
+            mes_2 = self.distance()
             m['left_dist'] += ((mes_1+mes_2)/2)
         self.encR(4)
         for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
-            mes_1=us_dist(15)
-            mes_2 = us_dist(15)
+            mes_1= self.distance()
+            mes_2 = self.distance()
             m['mid_left_dist'] += ((mes_1+mes_2)/2)
         self.encR(4)
         for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
-            mes_1 = us_dist(15)
-            mes_2 = us_dist(15)
+            mes_1 = self.distance()
+            mes_2 = self.distance()
             m['mid_dist'] += ((mes_1+mes_2)/2)
         self.encR(4)
         for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
-            mes_1 = us_dist(15)
-            mes_2 = us_dist(15)
+            mes_1 = self.distance()
+            mes_2 = self.distance()
             m['mid_right_dist'] += ((mes_1+mes_2)/2)
         self.encR(4)
         for ang in range(self.MIDPOINT+15, self.MIDPOINT-15, -3):
             self.servo(ang)
-            mes_1 = us_dist(15)
-            mes_2 = us_dist(15)
+            mes_1 = self.distance()
+            mes_2 = self.distance()
             m['right_dist'] += ((mes_1+mes_2)/2)
         self.encL(8)
 
@@ -320,21 +320,24 @@ class Piggy(pigo.Pigo):
         """proprietary check for obstacles used while driving"""
         total_dist = 0
         self.servo(self.MIDPOINT-10)
-        total_dist += us_dist(15)
-        time.sleep(.05)
+        total_dist += self.distance()
         self.servo(self.MIDPOINT -5)
-        total_dist += us_dist(15)
-        time.sleep(.05)
+        total_dist += self.distance()
         self.servo(self.MIDPOINT)
-        total_dist += us_dist(15)
-        time.sleep(.05)
+        total_dist += self.distance()
         self.servo(self.MIDPOINT +5)
-        total_dist += us_dist(15)
-        time.sleep(.05)
+        total_dist += self.distance()
         self.servo(self.MIDPOINT+10)
-        total_dist += us_dist(15)
-        time.sleep(.05)
+        total_dist += self.distance()
         return total_dist
+
+    def distance(self):
+        d= us_dist(15)
+        time.sleep(.01)
+        print ("DISTANCE MEASURED: " + d + " CM")
+        return d
+
+
 
     def cruise(self):
         """ drive straight while path is clear """

@@ -351,10 +351,11 @@ class Piggy(pigo.Pigo):
     def cruise(self):
         """ drive straight while path is clear """
         self.fwd()
-        if self.cruise_check() > self.SAFE_STOP_DIST*3:
+        if self.cruise_check() > 120:
         #scan to check for obstacles while driving
             time.sleep(.01)
         else:
+            self.encB(3)
             self.stop()
         #returns robot to nav method
 

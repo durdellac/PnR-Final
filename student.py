@@ -330,11 +330,11 @@ class Piggy(pigo.Pigo):
 
     def cruise_check(self):
         """proprietary check for obstacles used while driving"""
-        for x in range (-5,6,5)
         total_dist = 0
-        self.servo(self.MIDPOINT +x)
-        total_dist += self.distance()
-        return total_dist()
+        for x in range (-5,6,5):
+            self.servo(self.MIDPOINT + x)
+            total_dist += self.distance()
+            return total_dist()
 
 
     def distance(self):

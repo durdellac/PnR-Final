@@ -330,13 +330,14 @@ class Piggy(pigo.Pigo):
 
     def cruise_check(self):
         """proprietary check for obstacles used while driving"""
-
-        for x in range (-5,6,5):
-            total_dist = 0
-            self.servo(self.MIDPOINT + x)
-            total_dist += self.distance()
-            return total_dist()
-
+        total_dist = 0
+        self.servo(self.MIDPOINT -5)
+        total_dist += self.distance()
+        self.servo(self.MIDPOINT)
+        total_dist += self.distance()
+        self.servo(self.MIDPOINT +5)
+        total_dist += self.distance()
+        return total_dist
 
     def distance(self):
         """custom distance to subvert self.dist"""
@@ -350,7 +351,7 @@ class Piggy(pigo.Pigo):
     def cruise(self):
         """ drive straight while path is clear """
         self.fwd()
-        if self.cruise_check() > 40:
+        if self.cruise_check() > 120:
         #scan to check for obstacles while driving
             time.sleep(.01)
         else:

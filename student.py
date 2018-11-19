@@ -254,12 +254,21 @@ class Piggy(pigo.Pigo):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
-            if self.distance()>30:
+            if self.pre_distance()>30:
                 self.cruise()
             else:
             #if robot gets stuck
                 self.direction_choice()
 
+    def pre_distance(self):
+        """checks close to robot before cruising"""
+        self.servo(self.MIDPOINT + 2)
+        mes_1= self.distance()
+        self.servo(self.MIDPOINT)
+        mes_2=self.distance()
+        self.servo(self.MIDPOINT - 2)
+        mes_3 = self.distance()
+        return ((mes_1+mes_2+mes_3)/3)
 
     def direction_choice(self):
         """decides which direction to turn for cruise"""
@@ -280,7 +289,7 @@ class Piggy(pigo.Pigo):
         self.encR(4)
         for ang in range(self.MIDPOINT + 15, self.MIDPOINT - 15, -3):
             self.servo(ang)
-            mes_1= self.distance()
+            mes_1 = self.distance()
             mes_2 = self.distance()
             m['mid_left_dist'] += ((mes_1+mes_2)/2)
         self.encR(3)

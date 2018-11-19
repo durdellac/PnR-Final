@@ -254,7 +254,7 @@ class Piggy(pigo.Pigo):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
-            if self.is_clear():
+            if self.distance()>30:
                 self.cruise()
             else:
             #if robot gets stuck

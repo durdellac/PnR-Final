@@ -13,8 +13,8 @@ class Pigo(object):
         self.MIDPOINT = 90
         self.HARD_STOP_DIST = 15
         self.SAFE_STOP_DIST = 20
-        self.RIGHT_SPEED = 200
-        self.LEFT_SPEED = 200
+        self.RIGHT_SPEED = 190
+        self.LEFT_SPEED = 190
         self.turn_track = 0
         self.scan = [None] * 180
 

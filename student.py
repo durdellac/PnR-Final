@@ -263,11 +263,11 @@ class Piggy(pigo.Pigo):
     def pre_distance(self):
         """checks close to robot before cruising"""
         total_dist = 0
-        self.servo(self.MIDPOINT - 2)
+        self.servo(self.MIDPOINT - 3)
         total_dist += self.distance()
         self.servo(self.MIDPOINT)
         total_dist += self.distance()
-        self.servo(self.MIDPOINT + 2)
+        self.servo(self.MIDPOINT + 3)
         total_dist += self.distance()
         return (total_dist/3)
 
@@ -355,8 +355,8 @@ class Piggy(pigo.Pigo):
         #scan to check for obstacles while driving
             time.sleep(.01)
         else:
-            self.encB(3)
             self.stop()
+            self.encB(3)
         #returns robot to nav method
 
     def open_house(self):

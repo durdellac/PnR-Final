@@ -333,10 +333,21 @@ class Piggy(pigo.Pigo):
         total_dist = 0
         self.servo(self.MIDPOINT -7)
         total_dist += self.distance()
-        self.servo(self.MIDPOINT)
-        total_dist += self.distance()
-        self.servo(self.MIDPOINT +7)
-        total_dist += self.distance()
+        if total_dist > 40:
+            total_dist =0
+            self.servo(self.MIDPOINT)
+            total_dist += self.distance()
+            if total_dist > 40:
+                total_dist = 0
+                self.servo(self.MIDPOINT +7)
+                total_dist += self.distance()
+                return total_dist
+            else:
+                return total_dist
+        else:
+            return total_dist
+
+
         return total_dist
 
     def distance(self):
@@ -350,13 +361,16 @@ class Piggy(pigo.Pigo):
 
     def cruise(self):
         """ drive straight while path is clear """
+        print("cruising")
         self.fwd()
-        if self.cruise_check() > 120:
+        if self.cruise_check() > 40:
         #scan to check for obstacles while driving
+            print("clear while cruising")
             time.sleep(.01)
         else:
             self.stop()
-            self.encB(3)
+            print("stopped cruising")
+            self.encB(5)
         #returns robot to nav method
 
     def open_house(self):

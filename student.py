@@ -255,7 +255,7 @@ class Piggy(pigo.Pigo):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
-            if self.pre_distance() > 30:
+            if self.pre_distance() > 35:
                 self.cruise()
                 count= 0
             else:
@@ -354,22 +354,25 @@ class Piggy(pigo.Pigo):
         total_dist = 0
         self.servo(self.MIDPOINT -7)
         total_dist += self.distance()
-        if total_dist > 40:
+        if total_dist > 31:
             total_dist =0
             self.servo(self.MIDPOINT)
             total_dist += self.distance()
-            if total_dist > 40:
+            if total_dist > 31:
                 total_dist = 0
                 self.servo(self.MIDPOINT +7)
                 total_dist += self.distance()
-                return total_dist
+                if total_dist > 31:
+                    self.cruise_check()
+                else:
+                    return total_dist
             else:
                 return total_dist
         else:
             return total_dist
 
 
-        return total_dist
+
 
     def distance(self):
         """custom distance to subvert self.dist"""
@@ -383,6 +386,7 @@ class Piggy(pigo.Pigo):
     def cruise(self):
         """ drive straight while path is clear """
         print("cruising")
+        self.set_speed(162,160)
         self.fwd()
         if self.cruise_check() > 30:
         #scan to check for obstacles while driving

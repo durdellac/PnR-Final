@@ -248,6 +248,7 @@ class Piggy(pigo.Pigo):
         return True
 
     def nav(self):
+        count= 0
         """auto pilots and attempts to maintain original heading"""
         logging.debug("Starting the nav method")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
@@ -256,9 +257,27 @@ class Piggy(pigo.Pigo):
         while True:
             if self.pre_distance() > 30:
                 self.cruise()
+                count= 0
             else:
             #if robot gets stuck
-                self.direction_choice()
+                if count ==10:
+                    self.troubleshoot()
+                else:
+                    self.direction_choice()
+                    count += 1
+
+    def troubleshoot(self):
+        """stops the robot if there """
+        print("It appears that the robot is stuck in a loop")
+        print("Would you like to pause the app")
+        choice = input ("Y/N")
+        if "Y" in choice:
+            self.stop()
+        elif "N" in choice:
+            self.nav()
+        else:
+            print ("That isn't a valid option")
+            self.troubleshoot()
 
     def pre_distance(self):
         """checks close to robot before cruising"""

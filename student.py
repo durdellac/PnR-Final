@@ -386,8 +386,9 @@ class Piggy(pigo.Pigo):
     def cruise(self):
         """ drive straight while path is clear """
         print("cruising")
-        self.set_speed(162,160)
+        self.set_speed(150,150)
         self.fwd()
+
         if self.cruise_check() > 30:
         #scan to check for obstacles while driving
             print("clear while cruising")

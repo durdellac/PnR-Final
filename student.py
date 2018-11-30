@@ -354,15 +354,15 @@ class Piggy(pigo.Pigo):
         total_dist = 0
         self.servo(self.MIDPOINT -7)
         total_dist += self.distance()
-        if total_dist > 31:
+        if total_dist > 30:
             total_dist =0
             self.servo(self.MIDPOINT)
             total_dist += self.distance()
-            if total_dist > 31:
+            if total_dist > 30:
                 total_dist = 0
                 self.servo(self.MIDPOINT +7)
                 total_dist += self.distance()
-                if total_dist > 31:
+                if total_dist > 30:
                     self.cruise_check()
                 else:
                     return total_dist

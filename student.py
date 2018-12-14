@@ -258,13 +258,14 @@ class Piggy(pigo.Pigo):
             if self.pre_distance() > 35:
                 self.cruise()
                 count= 0
-            else:
+            else: 
             #if robot gets stuck
-                if count ==10:
+                if count == 10:
                     self.troubleshoot()
                 else:
-                    self.direction_choice()
                     count += 1
+                    self.direction_choice()
+
 
     def troubleshoot(self):
         """stops the robot if there """
@@ -352,15 +353,15 @@ class Piggy(pigo.Pigo):
     def cruise_check(self):
         """proprietary check for obstacles used while driving"""
         total_dist = 0
-        self.servo(self.MIDPOINT -10)
+        self.servo(self.MIDPOINT -12)
         total_dist += self.distance()
-        if total_dist > 30:
+        if total_dist > 25:
             total_dist =0
             self.servo(self.MIDPOINT)
             total_dist += self.distance()
-            if total_dist > 30:
+            if total_dist > 25:
                 total_dist = 0
-                self.servo(self.MIDPOINT +10)
+                self.servo(self.MIDPOINT +12)
                 total_dist += self.distance()
                 return total_dist
             else:
@@ -385,7 +386,7 @@ class Piggy(pigo.Pigo):
         print("cruising")
         self.set_speed(149,152)
 
-        if self.cruise_check() > 30:
+        if self.cruise_check() > 25:
         #scan to check for obstacles while driving
             print("clear while cruising")
             self.fwd()
